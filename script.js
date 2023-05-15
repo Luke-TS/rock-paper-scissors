@@ -1,6 +1,11 @@
-function playRound() {
-    let comp = getComputerChoice();
-    let user = getUserInput();
+const btn1 = document.querySelector('#btn-rock');
+const rock = btn1.addEventListener('click', function() {
+    playRound(btn1.textContent);
+})
+
+function playRound(user) {
+    const comp = getComputerChoice();
+//    const user = getUserInput();
     console.log(evaluateResult(user, comp));
     return;
 }
@@ -11,7 +16,7 @@ function getComputerChoice() {
 }
 
 function getUserInput() {
-    let userAns = prompt('rock, paper, scissors: ');
+    const userAns = prompt('rock, paper, scissors: ');
     return userAns.toLowerCase();
 }
 
