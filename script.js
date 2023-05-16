@@ -1,15 +1,25 @@
 const buttons = [...document.querySelectorAll('button')];
 let userScore = 0;
-
-
 let compScore = 0;
 
 buttons.forEach(btn => {
     btn.addEventListener('click', () => {
         playRound(btn.textContent.toLowerCase());
     });
+
 });
 
+const resetBtn = document.createElement('button');
+resetBtn.alignSelf = 'start';
+resetBtn.textContent = 'reset score';
+resetBtn.addEventListener('click', () => {
+    userScore = 0;
+    compScore = 0;
+    updateScore();
+    displayResult('');
+});
+const container = document.querySelector('.container');
+container.insertBefore(resetBtn, document.querySelector('.score-container'));
 
 function playRound(user) {
     const comp = getComputerChoice();
