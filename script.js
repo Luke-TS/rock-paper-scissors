@@ -1,12 +1,25 @@
-const btn1 = document.querySelector('#btn-rock');
-const rock = btn1.addEventListener('click', function() {
-    playRound(btn1.textContent);
-})
+const buttons = [...document.querySelectorAll('button')];
+let userScore = 0;
+
+
+let compScore = 0;
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        playRound(btn.textContent.toLowerCase());
+    });
+});
+
+function updateScore() {
+    document.getElementById('user-score').textContent = userScore;
+    document.getElementById('comp-score').textContent = compScore;
+}
 
 function playRound(user) {
     const comp = getComputerChoice();
-//    const user = getUserInput();
-    console.log(evaluateResult(user, comp));
+    result = evaluateResult(user, comp);
+    console.log(result);
+    updateScore()
     return;
 }
 
@@ -24,12 +37,15 @@ function evaluateResult(user, comp) {
     let result;
     if (user == 'rock' && comp == 'scissors' || user == 'scissors' && comp == 'paper' || user == 'paper' && comp == 'rock') {
         result = `You win! ${user} beats ${comp}`;
+        userScore++;
     }
     else if (user == comp) {
         result = `Tie! You both selected ${user}`;
     }
     else {
         result = `You lose! ${comp} beats ${user}`;
+        compScore++;
     }
     return result;
 }
+
