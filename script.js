@@ -19,8 +19,13 @@ function playRound(user) {
     const comp = getComputerChoice();
     result = evaluateResult(user, comp);
     console.log(result);
-    updateScore()
+    updateScore();
+    displayResult(result);
     return;
+}
+
+function displayResult(result) {
+    document.getElementById('result').textContent = result;
 }
 
 function getComputerChoice() {
