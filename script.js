@@ -10,10 +10,6 @@ buttons.forEach(btn => {
     });
 });
 
-function updateScore() {
-    document.getElementById('user-score').textContent = userScore;
-    document.getElementById('comp-score').textContent = compScore;
-}
 
 function playRound(user) {
     const comp = getComputerChoice();
@@ -22,6 +18,11 @@ function playRound(user) {
     updateScore();
     displayResult(result);
     return;
+}
+
+function updateScore() {
+    document.getElementById('user-score').textContent = userScore;
+    document.getElementById('comp-score').textContent = compScore;
 }
 
 function displayResult(result) {
